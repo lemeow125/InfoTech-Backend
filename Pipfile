@@ -7,6 +7,7 @@ name = "pypi"
 django = "*"
 djangorestframework = "*"
 djoser = "*"
+python-dotenv = "*"
 
 [dev-packages]
 autopep8 = "*"
