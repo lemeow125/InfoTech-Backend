@@ -12,6 +12,6 @@ class StudentSerializer(serializers.HyperlinkedModelSerializer):
                   'address', 'birthplace',
                   'mother_name', 'father_name',
                   'registrar_done', 'clearance_done', 'pta_done',
-                  'enrolled_subjects', 'year_level'
+                  'enrolled_subjects', 'year_level', 'current_semester'
                   ]
         read_only_fields = ['id']

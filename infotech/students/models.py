@@ -11,6 +11,10 @@ class Student(models.Model):
         THIRD_YEAR = 'IU-Y3', '3rd Year'
         FOURTH_YEAR = 'IU-Y4', '4th Year'
 
+    class Semesters(models.TextChoices):
+        FIRST_SEM = 'Sem-1', '1st Semester'
+        SECOND_SEM = 'Sem-2', '2nd Semester'
+
     class SexChoices(models.TextChoices):
         MALE = 'M', 'Male'
         FEMALE = 'F', 'Female'
@@ -35,6 +39,8 @@ class Student(models.Model):
     #
     enrolled_subjects = models.CharField(max_length=800)
     year_level = models.CharField(max_length=20, choices=YearLevels.choices)
+    current_semester = models.CharField(
+        max_length=20, choices=Semesters.choices, default=Semesters.FIRST_SEM)
 
     def __str__(self):
         return self.name
