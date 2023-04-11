@@ -8,6 +8,7 @@ django = "*"
 djangorestframework = "*"
 djoser = "*"
 python-dotenv = "*"
+psycopg2 = "*"
 
 [dev-packages]
 autopep8 = "*"

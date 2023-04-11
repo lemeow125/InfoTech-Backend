@@ -1,9 +1,12 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
 from .models import Student
+from subjects.models import Subject
 
 
 class StudentSerializer(serializers.HyperlinkedModelSerializer):
+    enrolled_subjects = serializers.SlugRelatedField(
+        queryset=Subject.objects.all(), many=True, slug_field='name', allow_null=True)
 
     class Meta:
         model = Student
