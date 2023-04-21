@@ -6,7 +6,7 @@ from students.models import Student
 
 class SubjectSerializer(serializers.HyperlinkedModelSerializer):
     students = serializers.SlugRelatedField(
-        queryset=Student.objects.all(), many=True, slug_field='full_name', allow_null=True)
+        queryset=Student.objects.all(), many=True, slug_field='last_name', allow_null=True)
 
     class Meta:
         model = Subject
