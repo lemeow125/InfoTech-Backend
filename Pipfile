@@ -9,6 +9,7 @@ djangorestframework = "*"
 djoser = "*"
 python-dotenv = "*"
 psycopg2 = "*"
+django-cors-headers = "*"
 
 [dev-packages]
 autopep8 = "*"

@@ -6,10 +6,10 @@ from django.utils.timezone import now
 
 class Subject(models.Model):
     class YearLevels(models.TextChoices):
-        FIRST_YEAR = 'IU-Y1', '1st Year'
-        SECOND_YEAR = 'IU-Y2', '2nd Year'
-        THIRD_YEAR = 'IU-Y3', '3rd Year'
-        FOURTH_YEAR = 'IU-Y4', '4th Year'
+        FIRST_YEAR = '1st Year'
+        SECOND_YEAR = '2nd Year'
+        THIRD_YEAR = '3rd Year'
+        FOURTH_YEAR = '4th Year'
 
     class Semesters(models.TextChoices):
         FIRST_SEM = 'Sem-1', '1st Semester'

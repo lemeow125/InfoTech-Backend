@@ -43,12 +43,14 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'djoser',
     'subjects',
+    'corsheaders',
     'students'
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -144,3 +146,11 @@ DJOSER = {
     'SEND_CONFIRMATION_EMAIL': True,
     'ACTIVATION_URL': 'activation/{uid}/{token}',
 }
+
+EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
+EMAIL_HOST_USER = '54ff6949e39105'
+EMAIL_HOST_PASSWORD = 'c59d3eaa05f98d'
+EMAIL_PORT = '2525'
+
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
