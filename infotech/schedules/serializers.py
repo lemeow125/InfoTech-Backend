@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import Schedule
 from professors.models import Professor
+from subjects.models import Subject
 from students.models import Student
 
 
@@ -13,6 +14,9 @@ class ScheduleSerializer(serializers.HyperlinkedModelSerializer):
 
     professor = serializers.SlugRelatedField(
         queryset=Professor.objects.all(), slug_field='full_name', allow_null=True)
+
+    subject = serializers.SlugRelatedField(
+        queryset=Subject.objects.all(), slug_field='code', allow_null=True)
 
     class Meta:
         model = Schedule
