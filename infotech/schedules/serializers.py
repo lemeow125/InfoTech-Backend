@@ -23,13 +23,3 @@ class ScheduleSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('id', 'subject', 'students_assigned',
                   'professor', 'date_created')
         read_only_fields = ('id', 'date_created')
-
-
-class StudentScheduleSerializer(serializers.HyperlinkedModelSerializer):
-    date_joined = serializers.DateTimeField(
-        format="%d-%m-%Y %I:%M%p", read_only=True)
-
-    class Meta:
-        model = Schedule
-        fields = ('id', 'schedule', 'student_assigned', 'date_joined')
-        read_only_fields = ('id', 'date_joined')

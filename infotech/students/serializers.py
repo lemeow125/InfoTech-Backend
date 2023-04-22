@@ -5,6 +5,8 @@ from schedules.models import Schedule
 
 
 class StudentSerializer(serializers.HyperlinkedModelSerializer):
+    schedules = serializers.SlugRelatedField(
+        queryset=Schedule.objects.all(), slug_field='schedule_subject', allow_null=True)
 
     class Meta:
         model = Student
@@ -13,6 +15,6 @@ class StudentSerializer(serializers.HyperlinkedModelSerializer):
                   'address', 'birthplace',
                   'mother_name', 'father_name',
                   'registrar_done', 'clearance_done', 'pta_done',
-                  'year_level', 'current_semester'
+                  'schedules', 'year_level', 'current_semester'
                   ]
         read_only_fields = ['id', 'full_name']

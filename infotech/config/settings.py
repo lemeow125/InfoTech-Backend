@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'students',
     'professors',
     'schedules',
+    'timeslots',
 ]
 
 MIDDLEWARE = [
@@ -156,3 +157,5 @@ EMAIL_PORT = '2525'
 
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
+
+TIME_INPUT_FORMATS = ['%I:%M %p',]

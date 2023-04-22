@@ -26,3 +26,6 @@ class StudentSchedule(models.Model):
     student_assigned = models.ForeignKey(
         'students.Student', on_delete=models.CASCADE)
     date_joined = models.DateTimeField(default=now, editable=False)
+
+    def __str__(self):
+        return self.schedule
