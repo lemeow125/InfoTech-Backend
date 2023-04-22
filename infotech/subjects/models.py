@@ -17,7 +17,6 @@ class Subject(models.Model):
 
     name = models.CharField(max_length=40)
     code = models.CharField(max_length=20)
-    max_slots = models.IntegerField(default=60)
     year_level = models.CharField(max_length=20, choices=YearLevels.choices)
     semester = models.CharField(
         max_length=20, choices=Semesters.choices, default=Semesters.FIRST_SEM)

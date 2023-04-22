@@ -15,6 +15,7 @@ class Schedule(models.Model):
         'daytimes.DayTime', related_name='DayTime_full_name', on_delete=models.CASCADE, null=True)
 
     date_created = models.DateTimeField(default=now, editable=False)
+    max_slots = models.IntegerField(default=50)
 
     def save(self, *args, **kwargs):
         self.name = f"{self.subject} : {self.professor}"
