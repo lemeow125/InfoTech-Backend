@@ -8,7 +8,7 @@ class Schedule(models.Model):
     name = models.TextField()
     subject = models.ForeignKey('subjects.Subject', on_delete=models.CASCADE)
     year_level = models.TextField()
-
+    semester = models.TextField()
     students_assigned = models.ManyToManyField(
         'students.Student', related_name='StudentSchedule_student_assigned', through='schedules.StudentSchedule')
     professor = models.OneToOneField(
@@ -21,8 +21,9 @@ class Schedule(models.Model):
     max_slots = models.IntegerField(default=50)
 
     def save(self, *args, **kwargs):
-        self.name = f"{self.subject} : {self.professor}"
+        self.name = f"{self.subject} : {self.professor} - {self.daytimes}"
         self.year_level = self.subject.year_level
+        self.semester = self.subject.semester
         super().save(*args, **kwargs)
 
     def __str__(self):

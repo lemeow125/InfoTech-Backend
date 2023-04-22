@@ -24,9 +24,10 @@ class ScheduleSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Schedule
-        fields = ('id', 'name', 'max_slots', 'subject', 'year_level', 'daytimes', 'students_assigned',
+        fields = ('id', 'name', 'max_slots', 'subject', 'year_level', 'semester', 'daytimes', 'students_assigned',
                   'professor', 'date_created')
-        read_only_fields = ('id', 'date_created', 'name', 'year_level')
+        read_only_fields = ('id', 'date_created', 'name',
+                            'year_level', 'semester')
 
     def validate(self, attrs):
         students = attrs.get('students')
