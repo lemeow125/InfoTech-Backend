@@ -8,7 +8,7 @@ from subjects.models import Subject
 
 class StudentSerializer(serializers.HyperlinkedModelSerializer):
     schedules = serializers.SlugRelatedField(
-        queryset=Subject.objects.all(), slug_field='name', allow_null=True)
+        queryset=Subject.objects.all(), many=True, slug_field='name', allow_null=True)
 
     class Meta:
         model = Student
