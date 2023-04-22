@@ -21,6 +21,7 @@ class Student(models.Model):
     first_name = models.CharField(max_length=40)
     middle_name = models.CharField(max_length=40)
     last_name = models.CharField(max_length=40)
+    full_name = models.CharField(max_length=120)
     #
     age = models.IntegerField()
     sex = models.CharField(max_length=1, choices=SexChoices.choices)
@@ -42,9 +43,9 @@ class Student(models.Model):
     current_semester = models.CharField(
         max_length=20, choices=Semesters.choices, default=Semesters.FIRST_SEM)
 
-    @property
-    def full_name(self):
-        return f"{self.first_name} {self.last_name}"
+    def save(self, *args, **kwargs):
+        self.full_name = f"{self.first_name} {self.middle_name} {self.last_name}"
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.full_name
