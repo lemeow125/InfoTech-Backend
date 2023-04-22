@@ -5,11 +5,9 @@ from students.models import Student
 
 
 class SubjectSerializer(serializers.HyperlinkedModelSerializer):
-    students = serializers.SlugRelatedField(
-        queryset=Student.objects.all(), many=True, slug_field='last_name', allow_null=True)
 
     class Meta:
         model = Subject
-        fields = ('id', 'name', 'students',
+        fields = ('id', 'name',
                   'max_slots', 'year_level', 'semester')
-        read_only_fields = ('id',)
+        read_only_fields = ['id']

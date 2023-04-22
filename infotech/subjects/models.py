@@ -12,24 +12,15 @@ class Subject(models.Model):
         FOURTH_YEAR = '4th Year'
 
     class Semesters(models.TextChoices):
-        FIRST_SEM = 'Sem-1', '1st Semester'
-        SECOND_SEM = 'Sem-2', '2nd Semester'
+        FIRST_SEM = '1st Semester'
+        SECOND_SEM = '2nd Semester'
 
     name = models.CharField(max_length=40)
+    code = models.CharField(max_length=20)
     max_slots = models.IntegerField(default=60)
     year_level = models.CharField(max_length=20, choices=YearLevels.choices)
     semester = models.CharField(
         max_length=20, choices=Semesters.choices, default=Semesters.FIRST_SEM)
 
-    students = models.ManyToManyField(
-        'students.Student', related_name='SubjectStudent_student_assigned', through='subjects.SubjectStudent')
-
     def __str__(self):
         return self.name
-
-
-class SubjectStudent(models.Model):
-    subject = models.ForeignKey('subjects.Subject', on_delete=models.CASCADE)
-    student_assigned = models.ForeignKey(
-        'students.Student', on_delete=models.CASCADE, null=True)
-    date_joined = models.DateTimeField(default=now, editable=False)

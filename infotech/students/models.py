@@ -36,8 +36,8 @@ class Student(models.Model):
     clearance_done = models.BooleanField()
     pta_done = models.BooleanField()
     #
-    enrolled_subjects = models.ManyToManyField(
-        'subjects.Subject', through='subjects.SubjectStudent')
+    # enrolled_subjects = models.ManyToManyField(
+    #    'subjects.Subject', through='subjects.SubjectStudent')
     year_level = models.CharField(max_length=20, choices=YearLevels.choices)
     current_semester = models.CharField(
         max_length=20, choices=Semesters.choices, default=Semesters.FIRST_SEM)
