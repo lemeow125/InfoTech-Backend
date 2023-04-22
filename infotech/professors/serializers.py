@@ -9,6 +9,6 @@ class ProfessorSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Professor
-        fields = ('id', 'first_name',
+        fields = ('id', 'full_name', 'first_name',
                   'last_name', 'age', 'gender', 'date_joined')
-        read_only_fields = ('id', 'date_joined')
+        read_only_fields = ('id', 'date_joined', 'full_name')
