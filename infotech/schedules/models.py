@@ -12,6 +12,13 @@ class Schedule(models.Model):
         'professors.Professor', related_name='Professor_full_name', on_delete=models.CASCADE)
     date_created = models.DateTimeField(default=now, editable=False)
 
+    @property
+    def name(self):
+        return f"{self.subject}"
+
+    def __str__(self):
+        return self.subject
+
 
 class StudentSchedule(models.Model):
     schedule = models.ForeignKey(

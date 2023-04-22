@@ -36,15 +36,15 @@ class Student(models.Model):
     clearance_done = models.BooleanField()
     pta_done = models.BooleanField()
     #
-    # enrolled_subjects = models.ManyToManyField(
-    #    'subjects.Subject', through='subjects.SubjectStudent')
+    # schedules = models.ManyToManyField(
+    #    'schedules.Schedule',  related_name='StudentSchedule_subject', through='schedules.StudentSchedule')
     year_level = models.CharField(max_length=20, choices=YearLevels.choices)
     current_semester = models.CharField(
         max_length=20, choices=Semesters.choices, default=Semesters.FIRST_SEM)
 
-    def __str__(self):
-        return self.first_name
-
     @property
     def full_name(self):
-        return self.first_name + " " + self.middle_name + " " + self.last_name
+        return f"{self.first_name} {self.last_name}"
+
+    def __str__(self):
+        return self.full_name

@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
 from .models import Student
-from subjects.models import Subject
+from schedules.models import Schedule
 
 
 class StudentSerializer(serializers.HyperlinkedModelSerializer):
