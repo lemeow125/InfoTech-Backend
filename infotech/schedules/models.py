@@ -10,6 +10,9 @@ class Schedule(models.Model):
         'students.Student', related_name='StudentSchedule_student_assigned', through='schedules.StudentSchedule')
     professor = models.OneToOneField(
         'professors.Professor', related_name='Professor_full_name', on_delete=models.CASCADE)
+    # daytimes = models.ForeignKey(
+    #    'daytimes.DayTime', related_name='DayTime_full_name', on_delete=models.CASCADE)
+
     date_created = models.DateTimeField(default=now, editable=False)
 
     @property
@@ -29,3 +32,16 @@ class StudentSchedule(models.Model):
 
     def __str__(self):
         return self.schedule
+
+
+'''
+class DayTimeSchedule(models.Model):
+    schedule = models.ForeignKey(
+        'schedules.Schedule', on_delete=models.CASCADE)
+    timeschedule = models.ForeignKey(
+        'daytimes.DayTime', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.schedule
+
+'''
