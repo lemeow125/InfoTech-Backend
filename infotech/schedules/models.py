@@ -5,6 +5,7 @@ from django.utils.timezone import now
 
 
 class Schedule(models.Model):
+    name = models.TextField()
     subject = models.ForeignKey('subjects.Subject', on_delete=models.CASCADE)
     students_assigned = models.ManyToManyField(
         'students.Student', related_name='StudentSchedule_student_assigned', through='schedules.StudentSchedule')
@@ -15,12 +16,12 @@ class Schedule(models.Model):
 
     date_created = models.DateTimeField(default=now, editable=False)
 
-    @property
-    def name(self):
-        return f"{self.subject}"
+    def save(self, *args, **kwargs):
+        self.name = f"{self.subject} : {self.professor}"
+        super().save(*args, **kwargs)
 
     def __str__(self):
-        return self.subject
+        return self.name
 
 
 class StudentSchedule(models.Model):

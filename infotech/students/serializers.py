@@ -1,12 +1,14 @@
+from django.shortcuts import get_object_or_404
 from rest_framework import serializers
 from django.contrib.auth.models import User
 from .models import Student
 from schedules.models import Schedule
+from subjects.models import Subject
 
 
 class StudentSerializer(serializers.HyperlinkedModelSerializer):
     schedules = serializers.SlugRelatedField(
-        queryset=Schedule.objects.all(), slug_field='schedule_subject', allow_null=True)
+        queryset=Subject.objects.all(), slug_field='name', allow_null=True)
 
     class Meta:
         model = Student

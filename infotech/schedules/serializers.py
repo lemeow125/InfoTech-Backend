@@ -20,6 +20,6 @@ class ScheduleSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Schedule
-        fields = ('id', 'subject', 'students_assigned',
+        fields = ('id', 'name', 'subject', 'students_assigned',
                   'professor', 'date_created')
-        read_only_fields = ('id', 'date_created')
+        read_only_fields = ('id', 'date_created', 'name')
