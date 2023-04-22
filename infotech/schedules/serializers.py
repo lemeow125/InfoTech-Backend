@@ -24,14 +24,14 @@ class ScheduleSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Schedule
-        fields = ('id', 'name', 'max_slots', 'subject', 'daytimes', 'students_assigned',
+        fields = ('id', 'name', 'max_slots', 'subject', 'year_level', 'daytimes', 'students_assigned',
                   'professor', 'date_created')
-        read_only_fields = ('id', 'date_created', 'name')
+        read_only_fields = ('id', 'date_created', 'name', 'year_level')
 
     def validate(self, attrs):
         students = attrs.get('students')
         max_slots = attrs.get('max_slots')
-        if students.count() > max_slots:
+        if students and students.count() > max_slots:
             raise serializers.ValidationError(
                 'Too many students for this subject')
         return attrs

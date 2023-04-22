@@ -7,10 +7,13 @@ from django.utils.timezone import now
 class Schedule(models.Model):
     name = models.TextField()
     subject = models.ForeignKey('subjects.Subject', on_delete=models.CASCADE)
+    year_level = models.TextField()
+
     students_assigned = models.ManyToManyField(
         'students.Student', related_name='StudentSchedule_student_assigned', through='schedules.StudentSchedule')
     professor = models.OneToOneField(
         'professors.Professor', related_name='Professor_full_name', on_delete=models.CASCADE)
+
     daytimes = models.ForeignKey(
         'daytimes.DayTime', related_name='DayTime_full_name', on_delete=models.CASCADE, null=True)
 
@@ -19,6 +22,7 @@ class Schedule(models.Model):
 
     def save(self, *args, **kwargs):
         self.name = f"{self.subject} : {self.professor}"
+        self.year_level = self.subject.year_level
         super().save(*args, **kwargs)
 
     def __str__(self):

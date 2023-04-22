@@ -9,4 +9,8 @@ router.register(r'schedules', views.ScheduleViewSet)
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
     path('', include(router.urls)),
+    path('first_year_schedules/', views.FirstYearScheduleViewSet.as_view()),
+    path('second_year_subjects/', views.SecondYearScheduleViewSet.as_view()),
+    path('third_year_schedules/', views.ThirdYearScheduleViewSet.as_view()),
+    path('fourth_year_schedules/', views.FourthYearScheduleViewSet.as_view()),
 ]
